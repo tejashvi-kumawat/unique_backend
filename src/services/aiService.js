@@ -75,10 +75,20 @@ export async function generateResponse(userMessage, context = {}) {
       'INSERT INTO messages (sender, content) VALUES (?, ?)',
       ['user', userMessage]
     );
+    // Also insert into FTS table for memories if not already present
+    await db.run(
+      'INSERT INTO memories_fts (value) VALUES (?)',
+      [userMessage]
+    );
 
     await db.run(
       'INSERT INTO messages (sender, content) VALUES (?, ?)',
       ['assistant', response]
+    );
+    // Also insert into FTS table for WhatsApp context if not already present
+    await db.run(
+      'INSERT INTO whatsapp_context_fts (message) VALUES (?)',
+      [response]
     );
 
     return response;

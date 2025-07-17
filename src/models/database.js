@@ -74,6 +74,10 @@ export async function initializeDatabase() {
     CREATE INDEX IF NOT EXISTS idx_memories_timestamp ON memories(timestamp);
     CREATE INDEX IF NOT EXISTS idx_photos_timestamp ON photos(timestamp);
     CREATE INDEX IF NOT EXISTS idx_whatsapp_timestamp ON whatsapp_context(timestamp);
+
+    -- FTS5 virtual tables for full-text search
+    CREATE VIRTUAL TABLE IF NOT EXISTS memories_fts USING fts5(value);
+    CREATE VIRTUAL TABLE IF NOT EXISTS whatsapp_context_fts USING fts5(message);
   `);
 
   console.log('✅ Database initialized successfully');
