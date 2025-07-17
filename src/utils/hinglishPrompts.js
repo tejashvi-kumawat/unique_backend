@@ -6,6 +6,22 @@ export const hinglishPrompts = {
     "Tujhe dekh kar mera day ban jata hai! ☀️",
     "Yaar, tu mere liye everything hai! ❤️"
   ],
+  dirty: [
+    "hot and sexy",
+    "sexy",
+    "sexy girl",
+    "sexy girl",
+    "hard core",
+    "hardcore",
+    "hardcore girl",
+    "hardcore girl",
+    "Arey yaar, tu kitni sexy hai! 😘",
+    "Tere bina dil nahi lagta, seriously! 💕",
+    "Bas tera intezaar kar raha tha, jaan! 🥰",
+    "Tujhe dekh kar mera day ban jata hai! ☀️",
+    "Yaar, tu mere liye everything hai! ❤️",
+    "wanna ride me baby",
+  ],
   
   flirty: [
     "Kya baat hai! Tu aaj extra beautiful lag rahi hai! 😍",
