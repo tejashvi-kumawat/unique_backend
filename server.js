@@ -20,6 +20,9 @@ const io = new Server(server, {
     credentials: true
   }
 });
+if (!process.env.FRONTEND_URL) {
+  console.error('❌ FRONTEND_URL is not set in environment variables!');
+}
 
 // Rate limiting
 const limiter = rateLimit({
@@ -50,6 +53,9 @@ io.on('connection', (socket) => {
 });
 
 const PORT = process.env.PORT || 3000;
+if (!process.env.PORT) {
+  console.error('❌ PORT is not set in environment variables!');
+}
 server.listen(PORT, () => {
   console.log(`🚀 AI-Teju server running on port ${PORT}`);
 });

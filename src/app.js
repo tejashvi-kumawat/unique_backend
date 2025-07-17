@@ -32,6 +32,9 @@ const io = new Server(server, {
     credentials: true
   }
 });
+if (!process.env.FRONTEND_URL) {
+  console.error('❌ FRONTEND_URL is not set in environment variables!');
+}
 
 // Request logging middleware
 app.use((req, res, next) => {
@@ -60,6 +63,10 @@ app.use(cors({
   credentials: true
 }));
 
+if (!process.env.FRONTEND_URL) {
+  console.error('❌ FRONTEND_URL is not set in environment variables!');
+}
+
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
@@ -80,6 +87,9 @@ app.use('/uploads', express.static(uploadsDir));
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+app.get('/', (req, res) => {
+  res.send('AI-Teju backend is running!');
 });
 
 // Routes with rate limiting
@@ -120,6 +130,9 @@ app.use('*', (req, res) => {
 
 // Initialize database and start server
 const PORT = process.env.PORT || 3000;
+if (!process.env.PORT) {
+  console.error('❌ PORT is not set in environment variables!');
+}
 
 async function startServer() {
   try {

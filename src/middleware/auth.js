@@ -2,6 +2,9 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-here';
+if (!process.env.JWT_SECRET) {
+  console.error('❌ JWT_SECRET is not set in environment variables!');
+}
 
 export const generateToken = (userId) => {
   return jwt.sign(
